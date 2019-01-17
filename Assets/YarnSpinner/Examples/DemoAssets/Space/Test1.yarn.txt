@@ -1,0 +1,33 @@
+title: Ship
+tags: 
+colorID: 0
+position: 166,46
+---
+Ship: this is fun
+Player: Hell yea this is fun 
+Ship: LET ME EAT YOUR BABIES!!! 
+[[Eat away charlie|Ship.eat]]
+[[Go fuck yourself|Ship.fucked]] 
+Ship: NOMNOMNOMNOM NOMMM
+
+
+    
+===
+title: Ship.eat
+tags: 
+colorID: 0
+position: 573,131
+---
+Ship: YUMMMMMM NOMNOMNOM
+    -> Test option 1
+        Ship: Selected Option 1 
+    -> Test option 2 
+        Player: selected 
+===
+title: Ship.fucked
+tags: 
+colorID: 0
+position: 574,382
+---
+Ship: I got fucked
+===
