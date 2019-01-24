@@ -5,9 +5,11 @@ position: 524,111
 ---
 <<if visited("Sally") is false>>
     <<cueanim Firelight Firelight>>
+    <<cueaudio Firelight FireSound1>>
     Player: Hey, Sally.
     Sally: Oh! Hi.
     Sally: You snuck up on me.
+    <<cueaudio Firelight FireSound2>>
     Sally: Don't do that.
 <<else>>
     Player: Hey.

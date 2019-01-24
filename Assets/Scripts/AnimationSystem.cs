@@ -16,8 +16,17 @@ namespace Yarn.Unity.Example
               
         }
 
+        //this is how we will organize our audio clips 
+        [System.Serializable]
+        public struct AudioInfo
+        {
+            public string name;
+            public AudioClip yarnAudio; //need to check on use of audio clips vs interacting with the emitter
+        }
 
         public AnimationInfo[] animations;
+        public AudioInfo[] audioclips;
+        public AudioSource audioSource;
 
         // Create a command to play and change animations 
         [YarnCommand("cueanim")] 
@@ -46,6 +55,33 @@ namespace Yarn.Unity.Example
             a = GetComponent<Animator>();
         }
 
+        // Create a command to play and change audio clips 
+        [YarnCommand("cueaudio")]
+        public void PlayYarnAudio(string audioName)
+        {
+            Debug.Log("YARN AUDIO COMMAND ACTIVATED!");
+            AudioClip musicClip = null;
+            foreach (var info in audioclips)
+            {
+                if (info.name == audioName)
+                {
+                    musicClip = info.yarnAudio;
+                    audioSource.clip = musicClip;
+                    audioSource.Play();
+                    Debug.Log("Set audio Trigger debug");
+
+                    break;
+                }
+            }
+
+            if (musicClip == null)
+            {
+                Debug.LogErrorFormat("Can't find audio named {0}!", audioName);
+                return;
+            }
+
+            //musicClip = GetComponent<AudioClip>();
+        }
 
     }
 }
