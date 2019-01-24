@@ -4,6 +4,7 @@ colorID: 0
 position: 524,111
 ---
 <<if visited("Sally") is false>>
+    <<cueanim Firelight Firelight>>
     Player: Hey, Sally.
     Sally: Oh! Hi.
     Sally: You snuck up on me.
@@ -15,6 +16,7 @@ position: 524,111
 
 <<if not visited("Sally.Watch")>>
     [[Anything exciting happen on your watch?|Sally.Watch]]
+    <<cueanim Firelight FirelightRed>>
 <<endif>>
 
 <<if $sally_warning and not visited("Sally.Sorry")>>

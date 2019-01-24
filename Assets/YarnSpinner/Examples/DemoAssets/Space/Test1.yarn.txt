@@ -4,10 +4,12 @@ colorID: 0
 position: 166,46
 ---
 Ship: this is fun
+<<setsprite ShipBace happy>>
 Player: Hell yea this is fun 
 Ship: LET ME EAT YOUR BABIES!!! 
 [[Eat away charlie|Ship.eat]]
 [[Go fuck yourself|Ship.fucked]] 
+
 Ship: NOMNOMNOMNOM NOMMM
 
 
