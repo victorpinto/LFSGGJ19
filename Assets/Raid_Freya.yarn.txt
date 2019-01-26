@@ -1,0 +1,24 @@
+title: Freya_Fjord
+tags: 
+colorID: 6
+position: 70,231
+---
+Freya: Battle is where I feel most at home. In that moment, nothing else matters but the swing of my axe, and defeating my enemy.
+<<envchange villageBattle Freya>>
+<<cueanim villageBattle BattleAnim>>
+<<cueaudio villageBattle BattleSound>>
+Freya: Ah, the glorious sound of combat. 
+Freya: The smell of shit and blood. 
+    -> killed 10 men.
+       <<set $freyaKilled to 10>>  
+       Freya: I killed 10 men that day. 
+    -> killed 2 men.  
+       <<set $freyaKilled to 2>>
+       Freya: I killed 2 men.
+
+<<if $freyaKilled > 5>>
+    Freya: I HAVE KILLED MANY MEN TODAY!
+<<elseif $freyaKilled < 5>> 
+    Freya: I did not bring glory to my family 
+<<endif>>
+===
