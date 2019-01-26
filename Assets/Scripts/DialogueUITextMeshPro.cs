@@ -276,7 +276,7 @@ namespace Yarn.Unity.Example {
 
                 whosTalking = GameObject.Find(nameOfChar);
 
-m,.
+                if (whosTalking.name != "Player")
                 {
                     dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
                 }
