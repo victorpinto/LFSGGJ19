@@ -154,42 +154,48 @@ namespace Yarn.Unity.Example {
         }
 
         /// Show a line of dialogue, gradually
-        public override IEnumerator RunLine (Yarn.Line line)
+        public override IEnumerator RunLine(Yarn.Line line)
         {
             // Show the text
-            lineText.gameObject.SetActive (true);
+            lineText.gameObject.SetActive(true);
             string dialogueText = ParseText(line.text);
 
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time
-                var stringBuilder = new StringBuilder ();
+                var stringBuilder = new StringBuilder();
 
                 foreach (char c in line.text) {
-                    stringBuilder.Append (c);
-                    lineText.text = stringBuilder.ToString ();
+                    stringBuilder.Append(c);
+                    lineText.text = stringBuilder.ToString();
 
-                    if (whosTalking.name != "Player")
-                    {
-                        dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
-                    }
-                    else
-                    { 
-                        //stuff here 
-                    }
+                    //if (whosTalking.name != "Player")
 
-                    yield return new WaitForSeconds (textSpeed);
+                    //{
+                    //    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+                    //}
+                    //else
+                    //{
+                    //    //stuff here 
+                    //}
+
+                    yield return new WaitForSeconds(textSpeed);
                 }
-            } else {
-                // Display the line immediately if textSpeed == 0
+            }
+        
+            else {
+                 //Display the line immediately if textSpeed == 0
                 lineText.text = line.text;
             }
 
             // Show the 'press any key' prompt when done, if we have one
             if (continuePrompt != null)
-                continuePrompt.SetActive (true);
+            {
+                continuePrompt.SetActive(true);
+            }
 
             // Wait for any user input
-            while (Input.anyKeyDown == false) {
+            while (Input.anyKeyDown == false)
+            {
                 yield return null;
             }
 
@@ -197,7 +203,9 @@ namespace Yarn.Unity.Example {
             lineText.gameObject.SetActive (false);
 
             if (continuePrompt != null)
-                continuePrompt.SetActive (false);
+            {
+                continuePrompt.SetActive(false);
+            }
 
         }
 
@@ -268,11 +276,11 @@ namespace Yarn.Unity.Example {
 
                 whosTalking = GameObject.Find(nameOfChar);
 
-                //if (whosTalking.name != "Player")
-                //{
-                //    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, 0);
-                //}
-                //else { }
+                if (whosTalking.name != "Player")
+                {
+                    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+                }
+                else { }
             }
 
             // Hide the game controls.
