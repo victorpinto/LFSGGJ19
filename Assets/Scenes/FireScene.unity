@@ -1165,7 +1165,7 @@ MonoBehaviour:
   lineText: {fileID: 584944562}
   continuePrompt: {fileID: 963603348}
   whosTalking: {fileID: 463211624}
-  nameOfChar: Something
+  nameOfChar: Player
   textSpeed: 0.025
   optionButtons:
   - {fileID: 1436701895}
