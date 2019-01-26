@@ -120,9 +120,9 @@ namespace Yarn.Unity
                 }
             }
 
-            if (startAutomatically) {
-                StartDialogue();
-            }
+            //if (startAutomatically) {
+            //    StartDialogue();
+            //}
 
             if (stringGroups != null) {
                 // Load the string table for this language, if appropriate

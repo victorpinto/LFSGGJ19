@@ -28,6 +28,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Text;
+using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 
@@ -57,6 +58,9 @@ namespace Yarn.Unity.Example {
 
         /// A UI element that appears after lines have finished appearing
         public GameObject continuePrompt;
+
+        public GameObject whosTalking;
+        public string nameOfChar;
 
         /// A delegate (ie a function-stored-in-a-variable) that
         /// we call to tell the dialogue system about what option
@@ -97,11 +101,64 @@ namespace Yarn.Unity.Example {
                 continuePrompt.SetActive (false);
         }
 
+        string ParseText(string p_input)
+        {
+
+            /* Step the first: Here we use the colon to separate the raw string into segments  */
+            var n = p_input.Split(':').First();          // Name
+            Debug.Log(n);
+            var not_name = p_input.Split(':').Last();       // This is some dialogue that is spoken *expression_1_r*
+
+            //var dialogue = not_name.Split('*')[0];          // This is some dialogue that is spoken
+            //var expression = not_name.Split('*')[1];        // expression_1_r
+
+            // !Beware! There are TWO asterisks, hence the string is split into THREE pieces,
+            // with the third being an empty string. We want the SECOND.
+
+            // Step the second, we make use of our bits of text
+            // we set the speaking character's name
+            if (n != string.Empty || n != null)
+            {
+                Debug.Log("name is not empty");
+                SetName(n);
+                return n;
+            }
+            else return string.Empty;
+
+            // we check what our expression is or how we want to move our portrait
+            //if (expression != string.Empty || expression != null)
+            //{
+            //    YourExpressionHandlingMethodHere(expression);
+
+            //    // ALTERNATIVELY
+            //    var motion_type = expression.Split('_')[0]; //expression
+            //    var index = expression.Split('_')[1]; // 1
+            //    var orientation = expression.Split('_')[2]; // r that is, right
+            //    YourExpressionHandlingMethodHere(motion_type, index, orientation);
+            //}
+
+            //// Step the third, take care of your dialogue
+            //if (expression != string.Empty || expression != null)
+            //{
+            //    return content.ToString();               // this the string you use for your actual dialogue!               
+            //}
+            //else
+            //{
+            //    return string.Empty;
+            //}
+        }
+
+        void SetName(string name)
+        {
+            nameOfChar = name;
+        }
+
         /// Show a line of dialogue, gradually
         public override IEnumerator RunLine (Yarn.Line line)
         {
             // Show the text
             lineText.gameObject.SetActive (true);
+            string dialogueText = ParseText(line.text);
 
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time
@@ -110,6 +167,16 @@ namespace Yarn.Unity.Example {
                 foreach (char c in line.text) {
                     stringBuilder.Append (c);
                     lineText.text = stringBuilder.ToString ();
+
+                    if (whosTalking.name != "Player")
+                    {
+                        dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+                    }
+                    else
+                    { 
+                        //stuff here 
+                    }
+
                     yield return new WaitForSeconds (textSpeed);
                 }
             } else {
@@ -196,7 +263,17 @@ namespace Yarn.Unity.Example {
 
             // Enable the dialogue controls.
             if (dialogueContainer != null)
+            {
                 dialogueContainer.SetActive(true);
+
+                whosTalking = GameObject.Find(nameOfChar);
+
+                //if (whosTalking.name != "Player")
+                //{
+                //    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, 0);
+                //}
+                //else { }
+            }
 
             // Hide the game controls.
             if (gameControlsContainer != null) {
@@ -222,7 +299,6 @@ namespace Yarn.Unity.Example {
 
             yield break;
         }
-
 
     }
 
