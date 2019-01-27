@@ -150,7 +150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8, y: -14}
+  m_AnchoredPosition: {x: -8.0000305, y: -14}
   m_SizeDelta: {x: -134.6, y: 10}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &84250658
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565956662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe18f4224e7904e9082a0d6df82aa89f, type: 3}
   m_Name: 
@@ -1164,6 +1164,7 @@ MonoBehaviour:
   optionsContainer: {fileID: 685402751}
   lineText: {fileID: 584944562}
   continuePrompt: {fileID: 963603348}
+  cam: {fileID: 0}
   whosTalking: {fileID: 463211624}
   nameOfChar: Player
   textSpeed: 0.025
@@ -1396,7 +1397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.9000244, y: 0}
+  m_AnchoredPosition: {x: -2.900055, y: 0}
   m_SizeDelta: {x: -5.7, y: -0.000030518}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963603350

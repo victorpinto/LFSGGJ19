@@ -58,7 +58,7 @@ namespace Yarn.Unity.Example {
 
         /// A UI element that appears after lines have finished appearing
         public GameObject continuePrompt;
-
+        public Camera cam;
         public GameObject whosTalking;
         public string nameOfChar;
 
@@ -84,21 +84,24 @@ namespace Yarn.Unity.Example {
 
         void Awake ()
         {
-            // Start by hiding the container, line and option buttons
             if (dialogueContainer != null)
+            {
                 dialogueContainer.SetActive(false);
-
-            lineText.gameObject.SetActive (false);
-
-            optionsContainer.gameObject.SetActive(false);
-
-            foreach (var button in optionButtons) {
-                button.gameObject.SetActive (false);
             }
 
-            // Hide the continue prompt if it exists
+            lineText.gameObject.SetActive (false);
+            cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+            optionsContainer.gameObject.SetActive(false);
+
+            foreach (var button in optionButtons)
+            {
+                button.gameObject.SetActive (false);
+            }
+            
             if (continuePrompt != null)
-                continuePrompt.SetActive (false);
+            {
+                continuePrompt.SetActive(false);
+            }
         }
 
         string ParseText(string p_input)
@@ -158,25 +161,20 @@ namespace Yarn.Unity.Example {
         {
             // Show the text
             lineText.gameObject.SetActive(true);
+            dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
+
             string dialogueText = ParseText(line.text);
 
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder();
 
+                //dialogueContainer.transform.position = cam.ViewportToWorldPoint(GameObject.Find(nameOfChar).transform.position /* + new Vector3(180, 180, 0)*/);
+                dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+
                 foreach (char c in line.text) {
                     stringBuilder.Append(c);
                     lineText.text = stringBuilder.ToString();
-
-                    //if (whosTalking.name != "Player")
-
-                    //{
-                    //    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
-                    //}
-                    //else
-                    //{
-                    //    //stuff here 
-                    //}
 
                     yield return new WaitForSeconds(textSpeed);
                 }
@@ -276,11 +274,6 @@ namespace Yarn.Unity.Example {
 
                 whosTalking = GameObject.Find(nameOfChar);
 
-                if (whosTalking.name != "Player")
-                {
-                    dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
-                }
-                else { }
             }
 
             // Hide the game controls.
