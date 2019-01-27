@@ -1,14 +1,24 @@
-title: Freya_Fjord
+title: Sigurd
 tags: 
 colorID: 6
-position: 70,231
+position: 80,331
 ---
-Freya: Battle is where I feel most at home. 
-Freya: In that moment, nothing matters but the swing of my axe.
-Freya: defeat is not an option.
-<<envchange village Battle >>
+<<envchange village Battle>>
 <<cueanim village BattleAnim>>
 <<cueaudio village BattleSound>>
+
+Sigurd: Some say, the raid is not about the destination, but the journey.
+Sigurd: I say, the journey fills my blood, and tires my bones. 
+Sigurd: Fuck thr journey. 
+<<envchange villate Tavern>>
+<<cueanim village Tavernm>>
+<<cueaudio village TavernMusic>>
+Sigurd: Barkeep, another horn!
+<<cueaudio village burp>>
+    -> Sigurd: I drank 10 horn's of ale that night.
+        <<set $sigurdAlecount to 10>>
+     
+
 Freya: Ah, the glorious sound of combat. 
 Freya: The smell of shit and blood. 
     -> Freya: I killed 10 men that day.
