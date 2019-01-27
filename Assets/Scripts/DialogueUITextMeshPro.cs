@@ -161,7 +161,7 @@ namespace Yarn.Unity.Example {
         {
             // Show the text
             lineText.gameObject.SetActive(true);
-            dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
+            //dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
 
             string dialogueText = ParseText(line.text);
 
@@ -170,7 +170,7 @@ namespace Yarn.Unity.Example {
                 var stringBuilder = new StringBuilder();
 
                 //dialogueContainer.transform.position = cam.ViewportToWorldPoint(GameObject.Find(nameOfChar).transform.position /* + new Vector3(180, 180, 0)*/);
-                dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+                //dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
 
                 foreach (char c in line.text) {
                     stringBuilder.Append(c);

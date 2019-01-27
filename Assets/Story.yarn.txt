@@ -1,0 +1,37 @@
+title: Story
+tags: 
+colorID: 0
+position: 166,46
+---
+[[Sigurd|Story.Sigurd]]
+[[Navlock|Story.Navlock]]
+<<setsprite EnvBackground Fjord>> 
+<<setsprite EnvBackground Fjord>>
+<<cueanim camera FjordZoom>>
+   
+===
+title: Story.Sigurd
+tags: 
+colorID: 0
+position: 573,131
+---
+<<setsprite envBackground Sigurd>>
+<<cueaudio envBackground wind>>
+Sigurd: That cold, damp night.
+Sigurd: We fought the beast, some to the death.
+Sigurd: Aegir was with us, I could feel him in my bones. 
+<<setsprite envBackground Sea>>
+<<cueaudio envBackground Storm>>
+Sigurd:
+    -> Test option 1
+        Ship: Selected Option 1 
+    -> Test option 2 
+        Player: selected 
+===
+title: Story.Navlock
+tags: 
+colorID: 0
+position: 574,382
+---
+Navlock Battle where I find myself at home. 
+===

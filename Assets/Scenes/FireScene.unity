@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceText:
   - {fileID: 4900000, guid: 153d791256cca4c9b92110d12c8dd92e, type: 3}
-  - {fileID: 4900000, guid: 6fadeb835c7bc486aa8b72fedd4d748d, type: 3}
+  - {fileID: 4900000, guid: 1f12d920348ed40f9bfe727241e182dd, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10
@@ -2664,7 +2664,7 @@ GameObject:
   - component: {fileID: 1926079638}
   - component: {fileID: 1926079641}
   m_Layer: 0
-  m_Name: Sigurd
+  m_Name: Story
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2726,7 +2726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926079637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4, y: -3.27, z: 0}
+  m_LocalPosition: {x: 2.52, y: -2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483402867}
@@ -2745,8 +2745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3419b57eb638f44db88701b5b33b8af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Sigurd
-  talkToNode: Sigurd
+  characterName: Story
+  talkToNode: Story
   scriptToLoad: {fileID: 0}
 --- !u!1 &2035575256
 GameObject:

@@ -1,18 +1,13 @@
-title: Sigurd
+title: Ship
 tags: 
 colorID: 0
 position: 166,46
 ---
-Sigurd: Home is the hearth. 
-Navlock: Home is battle. 
-[[Eat away charlie|Ship.eat]]
-[[Go fuck yourself|Ship.fucked]] 
-<<setsprite EnvBackground fjord>>
-<<cueanim camera FjordZoom>>
+Ship: this is fun
 Player: Hell yea this is fun 
 Ship: LET ME EAT YOUR BABIES!!! 
-
-
+[[Eat away charlie|Ship.eat]]
+[[Go fuck yourself|Ship.fucked]] 
 Ship: NOMNOMNOMNOM NOMMM
 
 
