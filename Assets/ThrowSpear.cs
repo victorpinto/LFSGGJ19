@@ -71,6 +71,7 @@ public class ThrowSpear : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && canThrow)
             {
                 charging = true;
+                anim.Play("Cock");
             }
 
             if(Input.GetKeyUp(KeyCode.Space) && charging && canThrow)
