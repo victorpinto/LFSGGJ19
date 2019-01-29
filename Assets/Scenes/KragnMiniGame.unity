@@ -1309,6 +1309,8 @@ MonoBehaviour:
     type: 3}
   canThrow: 0
   hurtTracker: 0
+  charging: 0
+  throwCharge: 0
   tenties: []
 --- !u!95 &1257461943
 Animator:

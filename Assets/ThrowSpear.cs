@@ -8,7 +8,8 @@ public class ThrowSpear : MonoBehaviour
     public GameObject spearPrefab;
     public bool canThrow;
     public int hurtTracker;
-    float rotClamp;
+    public bool charging;
+    public float throwCharge;
     GameObject spear;
     public GameObject[] tenties;
     Animator anim;
@@ -20,13 +21,14 @@ public class ThrowSpear : MonoBehaviour
     {
         canThrow = true;
         hurtTracker = 0;
+        throwCharge = 0;
         tenties = GameObject.FindGameObjectsWithTag("Tentacle");
         anim = GetComponent<Animator>();
         spear = transform.Find("spear").gameObject;
         fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<BlackFade>();
         hand = spear.transform.position;
         rb = spear.GetComponent<Rigidbody2D>();
-        hurl = new Vector2(-420, 75);
+        hurl = new Vector2(-80 - throwCharge, 7 - throwCharge * 0.08f);
     }
 
     public IEnumerator ImLazy()
@@ -34,7 +36,7 @@ public class ThrowSpear : MonoBehaviour
         hurtTracker = 0;
         anim.Play("ArmSwing");
         canThrow = false;
-        yield return new WaitForSecondsRealtime(0.067f);
+        yield return new WaitForSecondsRealtime(0.027f + throwCharge*0.00004f);
 
         //Let Go of Spear and arm its rigidbody here
         transform.DetachChildren();
@@ -68,8 +70,32 @@ public class ThrowSpear : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && canThrow)
             {
-                StartCoroutine(ImLazy());
+                charging = true;
+            }
+
+            if(Input.GetKeyUp(KeyCode.Space) && charging && canThrow)
+            {
+                Throw();
+            }
+        }
+
+        if(charging)
+        {
+            throwCharge += 12f;
+
+            if(throwCharge >= 1250)
+            {
+                Throw();
             }
         }
     }
+
+    void Throw()
+    {
+        StartCoroutine(ImLazy());
+        hurl = new Vector2(-290 - throwCharge, 780 - throwCharge);
+        throwCharge = 0;
+        charging = false;
+    }
+
 }
