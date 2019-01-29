@@ -781,7 +781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627131077}
   - component: {fileID: 627131076}
-  - component: {fileID: 627131078}
+  - component: {fileID: 627131075}
   - component: {fileID: 627131074}
   m_Layer: 0
   m_Name: DialogueSystem
@@ -804,6 +804,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultVariables: []
   debugTextView: {fileID: 0}
+--- !u!114 &627131075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627131073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269038157878341e188e6c5dc85629a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueContainer: {fileID: 84250656}
+  optionsContainer: {fileID: 685402751}
+  lineText: {fileID: 584944562}
+  continuePrompt: {fileID: 963603348}
+  cam: {fileID: 0}
+  textSpeed: 0.025
+  optionButtons:
+  - {fileID: 1436701895}
+  - {fileID: 1269959689}
+  - {fileID: 2063394888}
+  gameControlsContainer: {fileID: 323044764}
 --- !u!114 &627131076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +846,7 @@ MonoBehaviour:
   shouldOverrideLanguage: 0
   overrideLanguage: 10
   variableStorage: {fileID: 627131074}
-  dialogueUI: {fileID: 627131078}
+  dialogueUI: {fileID: 627131075}
   startNode: 
   startAutomatically: 0
   automaticCommands: 1
@@ -841,31 +864,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &627131078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627131073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bf7a6595e004869b63eaf0c6776ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 84250656}
-  optionsContainer: {fileID: 685402751}
-  lineText: {fileID: 584944562}
-  continuePrompt: {fileID: 963603348}
-  cam: {fileID: 0}
-  whosTalking: {fileID: 463211624}
-  nameOfChar: Player
-  textSpeed: 0.1
-  optionButtons:
-  - {fileID: 1436701895}
-  - {fileID: 1269959689}
-  - {fileID: 2063394888}
-  gameControlsContainer: {fileID: 323044764}
 --- !u!1 &685402751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2588335165750463656, guid: 583f39ad19b5b4a45851bf255c343220,
@@ -1622,6 +1620,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2588335165850955109, guid: 583f39ad19b5b4a45851bf255c343220,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588335165850955109, guid: 583f39ad19b5b4a45851bf255c343220,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588335166273170142, guid: 583f39ad19b5b4a45851bf255c343220,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588335166775456272, guid: 583f39ad19b5b4a45851bf255c343220,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588335167056891551, guid: 583f39ad19b5b4a45851bf255c343220,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2588335166051617605, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1745,7 +1768,7 @@ PrefabInstance:
     - target: {fileID: 2588335165443585782, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -451.40002
+      value: -451.4001
       objectReference: {fileID: 0}
     - target: {fileID: 2588335165443585782, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
@@ -1760,22 +1783,22 @@ PrefabInstance:
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 210
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -332
+      value: -20.2
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 296.80005
+      value: 694.8
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 190.90002
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
@@ -1792,21 +1815,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2588335165850955109, guid: 583f39ad19b5b4a45851bf255c343220,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2588335165850955109, guid: 583f39ad19b5b4a45851bf255c343220,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2588335166775456272, guid: 583f39ad19b5b4a45851bf255c343220,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 627131078}
     - target: {fileID: 2588335167022369732, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1817,15 +1825,5 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2588335166273170142, guid: 583f39ad19b5b4a45851bf255c343220,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 627131078}
-    - target: {fileID: 2588335167056891551, guid: 583f39ad19b5b4a45851bf255c343220,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 627131078}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 583f39ad19b5b4a45851bf255c343220, type: 3}
