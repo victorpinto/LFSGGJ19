@@ -33,5 +33,5 @@ tags:
 colorID: 0
 position: 574,382
 ---
-Navlock Battle where I find myself at home. 
+Navlock: Battle is where I find myself at home. 
 ===

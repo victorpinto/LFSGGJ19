@@ -41,7 +41,7 @@ namespace Yarn.Unity.Example {
      * is that you provide the RunLine, RunOptions, RunCommand
      * and DialogueComplete coroutines; what they do is up to you.
      */
-    public class DialogueUITextMeshPro : Yarn.Unity.DialogueUIBehaviour
+    public class DialogueUISystem : Yarn.Unity.DialogueUIBehaviour
     {
 
         /// The object that contains the dialogue and the options.
@@ -58,10 +58,9 @@ namespace Yarn.Unity.Example {
 
         /// A UI element that appears after lines have finished appearing
         public GameObject continuePrompt;
-
-        // things for moving the dialogue around
         public Camera cam;
-    
+        public GameObject whosTalking;
+        public string nameOfChar;
 
         /// A delegate (ie a function-stored-in-a-variable) that
         /// we call to tell the dialogue system about what option
@@ -76,87 +75,140 @@ namespace Yarn.Unity.Example {
         //public List<Button> optionButtons;
         public List<Button> optionButtons;
 
+         
+
+
         /// Make it possible to temporarily disable the controls when
         /// dialogue is active and to restore them when dialogue ends
         public RectTransform gameControlsContainer;
 
-        void Awake()
+        void Awake ()
         {
             if (dialogueContainer != null)
             {
                 dialogueContainer.SetActive(false);
             }
 
-            lineText.gameObject.SetActive(false);
+            lineText.gameObject.SetActive (false);
             cam = GameObject.Find("Main Camera").GetComponent<Camera>();
             optionsContainer.gameObject.SetActive(false);
 
             foreach (var button in optionButtons)
             {
-                button.gameObject.SetActive(false);
+                button.gameObject.SetActive (false);
             }
-
+            
             if (continuePrompt != null)
             {
                 continuePrompt.SetActive(false);
             }
         }
+
+        string ParseText(string p_input)
+        {
+
+            /* Step the first: Here we use the colon to separate the raw string into segments  */
+            var n = p_input.Split(':').First();          // Name
+            Debug.Log(n);
+            var not_name = p_input.Split(':').Last();       // This is some dialogue that is spoken *expression_1_r*
+
+            var dialogue = not_name.Split('*')[0];          // This is some dialogue that is spoken
+            //var expression = not_name.Split('*')[1];        // expression_1_r
+
+            // !Beware! There are TWO asterisks, hence the string is split into THREE pieces,
+            // with the third being an empty string. We want the SECOND.
+
+            // Step the second, we make use of our bits of text
+            // we set the speaking character's name
+            if (n != string.Empty || n != null)
+            {
+                Debug.Log("name is not empty");
+                SetName(n);
+                return n;
+            }
+            else return string.Empty;
+
+            // we check what our expression is or how we want to move our portrait
+            //if (expression != string.Empty || expression != null)
+            //{
+            //    YourExpressionHandlingMethodHere(expression);
+
+            //    // ALTERNATIVELY
+            //    var motion_type = expression.Split('_')[0]; //expression
+            //    var index = expression.Split('_')[1]; // 1
+            //    var orientation = expression.Split('_')[2]; // r that is, right
+            //    YourExpressionHandlingMethodHere(motion_type, index, orientation);
+            //}
+
+            //// Step the third, take care of your dialogue
+            //if (expression != string.Empty || expression != null)
+            //{
+            //    return content.ToString();               // this the string you use for your actual dialogue!               
+            //}
+            //else
+            //{
+            //    return string.Empty;
+            //}
+        }
+
+        void SetName(string name)
+        {
+            nameOfChar = name;
+        }
+
         /// Show a line of dialogue, gradually
         public override IEnumerator RunLine(Yarn.Line line)
         {
             // Show the text
             lineText.gameObject.SetActive(true);
-
-            //attempts to move the dialogue box 
             //dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
-            //dialogueContainer.transform.position = cam.ViewportToWorldPoint(GameObject.Find(nameOfChar).transform.position /* + new Vector3(180, 180, 0)*/);
-            //dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
 
-            //our string parsing 
-            string speakerName = "";
-            string lineTextDisplay = line.text;
-            if (line.text.Contains(":"))
-            { // if there's a ":" separator, then identify the first part as a speaker
-                var splitLine = line.text.Split(new char[] { ':' }, 2); // but only split once
-                speakerName = splitLine[0].Trim();
-                lineTextDisplay = splitLine[1].Trim();
-            }
+            string dialogueText = ParseText(line.text);
+            lineText.maxVisibleCharacters = 0; // this is a tmp property.. the documentation sucks 
 
 
-            //display our dialogue without the speaker name 
-            if (textSpeed > 0.0f)
-            {
-                // dislpay the line one character at a time
-                var stringBuilder = new StringBuilder();
+            if (textSpeed > 0.0f) {
+                // Display the line one character at a time
+                //var stringBuilder = new StringBuilder();
 
-                bool earlyOut = false;
-                yield return 0; // give time for previous input.anykeydown event to become false
-                foreach (char c in lineTextDisplay)
+                lineText.text = dialogueText;
+                lineText.ForceMeshUpdate();
+                int totalVisibleCharacters = lineText.textInfo.characterCount;
+
+                if (dialogueText == "null_skip_")
+                    yield break;
+
+                for (int i = 0; i< totalVisibleCharacters; i++)
                 {
-                    float timeWaited = 0f;
-                    stringBuilder.Append(c);
-                    lineText.text = stringBuilder.ToString();
-                    while (timeWaited < textSpeed)
-                    {
-                        timeWaited += Time.deltaTime;
-                        //early out / skip ahead 
-                        if (Input.anyKeyDown)
-                        {
-                            lineText.text = lineTextDisplay;
-                            earlyOut = true;
+                    lineText.maxVisibleCharacters = i;
 
-                        }
-                        yield return 0;
-                    }
-                    if (earlyOut) { break; }
+                    //wait for use input
+                    //if (skipPressed)
+                    //{
+                    //    lineText.maxVisibleCharacters = totalVisibleCharacters;
+                    //    break;
+                    //}
+                    //else
+                    //{
+                    yield return new WaitForSeconds(textSpeed);
+                    //}
                 }
-            }
-            else
-            {
-                //display the line immediatly if textSpeed == 0 
-                lineText.text = lineTextDisplay;
-            }
 
+                //dialogueContainer.transform.position = cam.ViewportToWorldPoint(GameObject.Find(nameOfChar).transform.position /* + new Vector3(180, 180, 0)*/);
+                //dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+
+                //foreach (char c in line.text) {
+                //    stringBuilder.Append(c);
+                //    lineText.text = stringBuilder.ToString();
+
+                //    yield return new WaitForSeconds(textSpeed);
+                //}
+            }
+        
+            else {
+                 //Display the line immediately if textSpeed == 0
+                lineText.text = line.text;
+            }
 
             // Show the 'press any key' prompt when done, if we have one
             if (continuePrompt != null)
@@ -245,6 +297,7 @@ namespace Yarn.Unity.Example {
             {
                 dialogueContainer.SetActive(true);
 
+                whosTalking = GameObject.Find(nameOfChar);
 
             }
 
