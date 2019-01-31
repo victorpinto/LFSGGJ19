@@ -475,7 +475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463211624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.68, y: 3.1, z: -0.58298093}
+  m_LocalPosition: {x: -5.9, y: -2.4, z: -0.58298093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1404859885}
@@ -813,14 +813,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 627131073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269038157878341e188e6c5dc85629a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b07463c3c6744a64b0a56716a36ffe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 84250656}
   optionsContainer: {fileID: 685402751}
   lineText: {fileID: 584944562}
   continuePrompt: {fileID: 963603348}
-  cam: {fileID: 0}
   textSpeed: 0.025
   optionButtons:
   - {fileID: 1436701895}
@@ -1783,12 +1782,12 @@ PrefabInstance:
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.95
+      value: 6.9492188
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20.2
+      value: -20.200012
       objectReference: {fileID: 0}
     - target: {fileID: 2588335166983040530, guid: 583f39ad19b5b4a45851bf255c343220,
         type: 3}

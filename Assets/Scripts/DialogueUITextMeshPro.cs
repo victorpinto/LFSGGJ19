@@ -106,7 +106,7 @@ namespace Yarn.Unity.Example {
         {
             // Show the text
             Debug.Log("Test RunLine");
-            lineText.gameObject.SetActive(true);
+
 
             //attempts to move the dialogue box 
             //dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
@@ -124,7 +124,8 @@ namespace Yarn.Unity.Example {
 
             }
 
-        
+            lineText.gameObject.SetActive(true);
+
             //display our dialogue without the speaker name 
             if (textSpeed > 0.0f)
             {
