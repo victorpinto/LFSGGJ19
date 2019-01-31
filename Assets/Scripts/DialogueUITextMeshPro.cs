@@ -105,6 +105,7 @@ namespace Yarn.Unity.Example {
         public override IEnumerator RunLine(Yarn.Line line)
         {
             // Show the text
+            Debug.Log("Test RunLine");
             lineText.gameObject.SetActive(true);
 
             //attempts to move the dialogue box 
@@ -120,9 +121,10 @@ namespace Yarn.Unity.Example {
                 var splitLine = line.text.Split(new char[] { ':' }, 2); // but only split once
                 speakerName = splitLine[0].Trim();
                 lineTextDisplay = splitLine[1].Trim();
+
             }
 
-
+        
             //display our dialogue without the speaker name 
             if (textSpeed > 0.0f)
             {
@@ -155,6 +157,9 @@ namespace Yarn.Unity.Example {
             {
                 //display the line immediatly if textSpeed == 0 
                 lineText.text = lineTextDisplay;
+
+                Debug.Log("Display: " + lineTextDisplay);
+               
             }
 
 
