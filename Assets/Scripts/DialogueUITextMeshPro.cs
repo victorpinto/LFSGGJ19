@@ -124,7 +124,7 @@ namespace Yarn.Unity.Example {
 
             }
 
-            lineText.gameObject.SetActive(true);
+
 
             //display our dialogue without the speaker name 
             if (textSpeed > 0.0f)
@@ -149,6 +149,7 @@ namespace Yarn.Unity.Example {
                             earlyOut = true;
 
                         }
+                        lineText.gameObject.SetActive(true);
                         yield return 0;
                     }
                     if (earlyOut) { break; }
@@ -159,7 +160,7 @@ namespace Yarn.Unity.Example {
                 //display the line immediatly if textSpeed == 0 
                 lineText.text = lineTextDisplay;
 
-                Debug.Log("Display: " + lineTextDisplay);
+                //Debug.Log("Display: " + lineTextDisplay);
                
             }
 
@@ -266,7 +267,11 @@ namespace Yarn.Unity.Example {
         public override IEnumerator DialogueComplete ()
         {
             Debug.Log ("Complete!");
-
+            // tried to make a shortcut to end dialogue... didnt work
+            //if (Input.GetKeyDown(KeyCode.Escape))
+            //{
+            //    dialogueContainer.SetActive(false);
+            //}
             // Hide the dialogue interface.
             if (dialogueContainer != null)
                 dialogueContainer.SetActive(false);

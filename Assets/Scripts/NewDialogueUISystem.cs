@@ -76,11 +76,6 @@ namespace Yarn.Unity.Example
 
             }
 
-
-
-            lineText.gameObject.SetActive(true);
-            Debug.Log("LineText display");
-
             //display our dialogue without the speaker name 
             if (textSpeed > 0.0f)
             {
@@ -104,6 +99,8 @@ namespace Yarn.Unity.Example
                             earlyOut = true;
 
                         }
+                        lineText.gameObject.SetActive(true);
+                        Debug.Log("LineText display");
                         yield return 0;
                     }
                     if (earlyOut) { break; }

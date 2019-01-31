@@ -91,8 +91,16 @@ namespace Yarn.Unity.Example {
             });
             if (target != null) {
                 // Kick off the dialogue at this node.
+               
+
+                var targetColour = target.GetComponent<Renderer>().material;
+                targetColour.color = Color.red;
                 FindObjectOfType<DialogueRunner> ().StartDialogue (target.talkToNode);
             }
         }
+
+        // highlight the node 
+
+
     }
 }
