@@ -33,6 +33,8 @@ namespace Yarn.Unity.Example {
     public class NPC : MonoBehaviour {
 
         public string characterName = "";
+        public Color targetHiliteColor;
+        public Color defaultColor;
 
         [FormerlySerializedAs("startNode")]
         public string talkToNode = "";
@@ -48,6 +50,29 @@ namespace Yarn.Unity.Example {
 
         }
 
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var targetHilite = this.gameObject.GetComponent<Renderer>().material;
+            if (other != null)
+            {
+                targetHilite.color = targetHiliteColor;
+                Debug.Log("you entered the trigger");
+            }
+
+        }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            var targetDefault = this.gameObject.GetComponent<Renderer>().material;
+
+            //if (other.gameObject.tag == "NPC")
+            if (other !=null)
+            {
+                targetDefault.color = defaultColor;
+                Debug.Log("you exited the trigger");
+            }
+
+        }
         // Update is called once per frame
         void Update () {
 
