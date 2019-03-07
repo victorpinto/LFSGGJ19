@@ -34,6 +34,12 @@ colorID: 0
 position: 574,382
 ---
 Navlock: Battle is where I find myself at home. 
+Sigurd: TEST TEST YO
 Navlock: My axe is true, and strikes my enemy with a feral slash!
 Navlock: There will be hell to pay. 
+Navlock:
+    -> Test option 1
+        Ship: Selected Option 1 
+    -> Test option 2 
+        Player: selected
 ===

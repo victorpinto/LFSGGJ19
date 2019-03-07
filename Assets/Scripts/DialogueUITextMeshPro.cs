@@ -61,7 +61,9 @@ namespace Yarn.Unity.Example {
 
         // things for moving the dialogue around
         public Camera cam;
-    
+
+        // rect transform for moving the dialogue box
+        public RectTransform dialogueMover;
 
         /// A delegate (ie a function-stored-in-a-variable) that
         /// we call to tell the dialogue system about what option
@@ -112,6 +114,7 @@ namespace Yarn.Unity.Example {
             //dialogueContainer.transform.position = cam.ScreenToWorldPoint(whosTalking.transform.position);
             //dialogueContainer.transform.position = cam.ViewportToWorldPoint(GameObject.Find(nameOfChar).transform.position /* + new Vector3(180, 180, 0)*/);
             //dialogueContainer.transform.position = GameObject.Find(nameOfChar).transform.position + new Vector3(5, 7, -15);
+           
 
             //our string parsing 
             string speakerName = "";
@@ -124,7 +127,23 @@ namespace Yarn.Unity.Example {
 
             }
 
+            // moving the dialogue stuff 
+            Debug.Log(speakerName);
 
+            GameObject[] npcList = GameObject.FindGameObjectsWithTag("NPC");
+
+
+            for (int i = 0; i < npcList.Length; i++)
+            {
+
+                NPC current = npcList[i].GetComponent<NPC>();
+                Debug.Log("current: " + current.characterName);
+                if (current.characterName == speakerName)
+                {
+                    dialogueMover.position = current.transform.position + new Vector3(0, 0, 0);
+                    Debug.Log("dialogue moved!");
+                }
+            }
 
             //display our dialogue without the speaker name 
             if (textSpeed > 0.0f)
@@ -157,8 +176,20 @@ namespace Yarn.Unity.Example {
             }
             else
             {
+                for (int i = 0; i < npcList.Length; i++)
+                {
+
+                    NPC current = npcList[i].GetComponent<NPC>();
+                    Debug.Log("current: " + current.characterName);
+                    if (current.characterName == speakerName)
+                    {
+                        dialogueMover.position = current.transform.position + new Vector3(0, 0, 0);
+                        Debug.Log("dialogue moved!");
+                    }
+                }
                 //display the line immediatly if textSpeed == 0 
                 lineText.text = lineTextDisplay;
+
 
                 //Debug.Log("Display: " + lineTextDisplay);
                
