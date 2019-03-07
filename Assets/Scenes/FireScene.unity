@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 463211627}
   - component: {fileID: 463211628}
   m_Layer: 0
-  m_Name: Sally
+  m_Name: Navlock
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3419b57eb638f44db88701b5b33b8af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Sally
+  characterName: Navlock
   targetHiliteColor: {r: 0.28773582, g: 0.5475029, b: 1, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   talkToNode: Story.Navlock
@@ -1321,7 +1321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106.73, y: -76.98}
+  m_AnchoredPosition: {x: 106.73047, y: -76.98}
   m_SizeDelta: {x: 213.46, y: 33.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584944562
@@ -1534,6 +1534,7 @@ MonoBehaviour:
   lineText: {fileID: 354513870}
   continuePrompt: {fileID: 963603348}
   cam: {fileID: 0}
+  dialogueMover: {fileID: 84250657}
   textSpeed: 0.025
   optionButtons:
   - {fileID: 1436701895}
@@ -3104,8 +3105,8 @@ GameObject:
   - component: {fileID: 1926079638}
   - component: {fileID: 1926079640}
   m_Layer: 0
-  m_Name: Story
-  m_TagString: Untagged
+  m_Name: Sigurd
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3211,7 +3212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3419b57eb638f44db88701b5b33b8af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Story
+  characterName: Sigurd
   targetHiliteColor: {r: 0.28773582, g: 0.5475029, b: 1, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   talkToNode: Story.Sigurd

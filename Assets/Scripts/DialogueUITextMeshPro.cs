@@ -135,7 +135,6 @@ namespace Yarn.Unity.Example {
 
             for (int i = 0; i < npcList.Length; i++)
             {
-
                 NPC current = npcList[i].GetComponent<NPC>();
                 Debug.Log("current: " + current.characterName);
                 if (current.characterName == speakerName)
@@ -176,20 +175,8 @@ namespace Yarn.Unity.Example {
             }
             else
             {
-                for (int i = 0; i < npcList.Length; i++)
-                {
-
-                    NPC current = npcList[i].GetComponent<NPC>();
-                    Debug.Log("current: " + current.characterName);
-                    if (current.characterName == speakerName)
-                    {
-                        dialogueMover.position = current.transform.position + new Vector3(0, 0, 0);
-                        Debug.Log("dialogue moved!");
-                    }
-                }
                 //display the line immediatly if textSpeed == 0 
                 lineText.text = lineTextDisplay;
-
 
                 //Debug.Log("Display: " + lineTextDisplay);
                
