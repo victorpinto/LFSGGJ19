@@ -177,8 +177,6 @@ namespace Yarn.Unity.Example {
             {
                 //display the line immediatly if textSpeed == 0 
                 lineText.text = lineTextDisplay;
-
-                //Debug.Log("Display: " + lineTextDisplay);
                
             }
 
@@ -216,6 +214,7 @@ namespace Yarn.Unity.Example {
 
             //set the options container to active
             optionsContainer.gameObject.SetActive(true);
+            Debug.Log("activated options");
 
             // Display each option in a button, and make it visible
             int i = 0;
@@ -242,7 +241,7 @@ namespace Yarn.Unity.Example {
         /// Called by buttons to make a selection.
         public void SetOption (int selectedOption)
         {
-
+            Debug.Log("I AM HERE: " + selectedOption);
             // Call the delegate to tell the dialogue system that we've
             // selected an option.
             SetSelectedOption (selectedOption);
